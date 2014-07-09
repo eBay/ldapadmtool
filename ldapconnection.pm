@@ -157,7 +157,6 @@ sub ADConnect {
 		print "No Active Directory connection is available from $domain\n";
 		return;
 	}
-
 	if ($DEBUG) { print "connecting to $ad_server ...\n"; }
 	my $ldap = Net::LDAP->new($ad_server) or  die "$@";
 	if ($DEBUG) { print "binding as $ad_binddn \n"; }
@@ -173,19 +172,16 @@ sub findObject {
 	my $base = shift;
 	my $query = shift;
 	if ($DEBUG) { print "findObject: base: " . $base . " query: " . $query . "\n"; }
-	my $msg = $ldap->search(base => $base,
-	filter => $query);
-	
+	my $msg = $ldap->search(base => $base, filter => $query);
 	if ($msg->code)	{
 		$ec = $msg->code;
-        if ($ec == LDAP_NO_SUCH_OBJECT ) {
+        	if ($ec == LDAP_NO_SUCH_OBJECT ) {
 			print "\nCouldn't find $query .\n";
 			exit(5);
-        }
-        print "LDAP Error code: $ec\n";
-        print STDERR $msg->error, "\n";
+	        }
+        	print "LDAP Error code: $ec\n";
+	        print STDERR $msg->error, "\n";
 	}
-	
 	$ent=$msg->entry(0);
 	return $ent;
 }
@@ -198,17 +194,15 @@ sub findObjects {
 	my $query = shift;
 	if ($DEBUG) { print "findObjects: base: " . $base . " query: " . $query . "\n"; }
 	my $msg = $ldap->search(base => $base, filter => $query);
-	
 	if ($msg->code)	{
 		$ec = $msg->code;
         if ($ec == LDAP_NO_SUCH_OBJECT ) {
-			print "\nCouldn't find $query .\n";
-			exit(5);
+		print "\nCouldn't find $query .\n";
+		exit(5);
         }
         print "LDAP Error code: $ec\n";
         die $msg->error;
 	}
-	
 	my @entries=$msg->entries();
 	return @entries;
 }
@@ -221,19 +215,17 @@ sub ldapDelete {
 	my $dn = shift;
 	# Remove entry
 	$msg = $ldap->delete($dn);
-	if ($msg->code)
-	{       $ec = $msg->code;
-        if ($ec == LDAP_NO_SUCH_OBJECT )
-        {       print "\nCouldn't find object $dn for delete operation.\n";
+	if ($msg->code) {
+		$ec = $msg->code;
+        	if ($ec == LDAP_NO_SUCH_OBJECT ) {
+			print "\nCouldn't find object $dn for delete operation.\n";
 			exit(1);
-        }
-        print "LDAP Error code: $ec\n";
-        die $msg->error;
+	        }
+        	print "LDAP Error code: $ec\n";
+        	die $msg->error;
 	}
 	print "Deleted $dn\n";
 	return 0;
 }
 
-
-# missing functions
 1;
