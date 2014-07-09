@@ -1,4 +1,4 @@
-This is the UNIX LDAP command toolchain by Adam Beeman, 2011, eBay Inc.
+This is the UNIX LDAP command toolchain by Adam Beeman, 2011-2014, eBay Inc.
 
 The only script in this directory you should need to run directly is
 ldapadmtool.pl. The rest are supporting files which could be installed
@@ -23,4 +23,9 @@ ldap_binddn
 ldap_bindpw
 ad_binddn
 ad_bindpw
+
+To configure the tool, after installing the required perl modules,
+just edit config.pm to customize it, and also edit ldapadmtool.pl
+to change the first line to point to the location where you have installed
+the files.
 
