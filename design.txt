@@ -1,0 +1,37 @@
+The objective of this tool set is to provide a complete set of account management tools that are somewhat portable across subdomains, so that one command can be used across multiple domains.
+
+
+LDAP user administration tools - this module addresses all aspects of creating users, modifying them, adding them to groups or netgroups, and even keeping netgroups aligned with Outlook mail groups.
+
+LDAP host administration - this module manages properly configuring hosts to be LDAP clients,
+performing consistency checks on hosts including nightly audits, distributing and instslling software or data files, and monitoring.
+
+LDAP netgroup management functions will be accessed by both of the above tools.
+Also needed will be automount and sudo LDAP management tools.
+
+the following ldap object classes have been implemented as equivalent modules:
+user
+gidgroup
+netgroup
+host
+automount
+sudoer
+
+other custom classes:
+ldapconnection
+
+
+In general my use of getopts will be to use lower case letters for switches that include
+arguements, and upper case letters for standalone switches.
+
+The main file is ldapadmtool.pl, which attempts to limit its own role to providing help,
+argument parsing, and divvying out tasks to the other included modules. Each module
+implements its own entry point function, which will be named ldapadmtool<module>Main(),
+for example ldapadmtoolUserMain resides in user.pm.
+
+A few actions are basically "combo actions" comprised of one or more atomic actions. 
+Combo actions include things like "create a user and add him to a netgroup". Often,
+these actions will involve multiple objects (user and netgroup, for example), and 
+may throw exceptions or make choices mid-way. Most combo actions will be controlled 
+from the main ldapadmtool.pl module.
+
