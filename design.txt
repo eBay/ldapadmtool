@@ -1,15 +1,19 @@
-The objective of this tool set is to provide a complete set of account management tools that are somewhat portable across subdomains, so that one command can be used across multiple domains.
+The objective of this tool set is to provide a complete set of account management tools that are 
+somewhat portable across subdomains, so that one command can be used across multiple domains.
 
 
-LDAP user administration tools - this module addresses all aspects of creating users, modifying them, adding them to groups or netgroups, and even keeping netgroups aligned with Outlook mail groups.
+LDAP directory administration tools - these modules address all aspects of creating and modifying
+users, groups, netgroups, sudo roles, and automount maps.
 
 LDAP host administration - this module manages properly configuring hosts to be LDAP clients,
-performing consistency checks on hosts including nightly audits, distributing and instslling software or data files, and monitoring.
+performing consistency checks on hosts including nightly audits, distributing and installing software 
+or data files, and monitoring. This module currently only handles the task of pushing specific 
+netgroup inclusions to the /etc/passwd file of a host, assuming that passwordless SSH to the host
+is possible as root via previously installed SSH keys.
 
-LDAP netgroup management functions will be accessed by both of the above tools.
-Also needed will be automount and sudo LDAP management tools.
 
-the following ldap object classes have been implemented as equivalent modules:
+
+The following ldap object classes have been implemented as equivalent modules:
 user
 gidgroup
 netgroup
