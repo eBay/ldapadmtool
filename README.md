@@ -2,7 +2,9 @@ This is the UNIX LDAP command toolchain by Adam Beeman, 2011-2014, eBay Inc.
 
 The only script in this directory you should need to run directly is
 ldapadmtool.pl. The rest are supporting files which could be installed
-into your Perl @INC path somewhere.
+into your Perl @INC path somewhere. Because it's pure Perl, it has been run successfully
+on several flavors of Linux, Solaris, and Mac OS X. In theory, it would
+probably work on Windows as well, if you install the required Perl modules.
 
 This script requires a few perl modules which can be obtained from CPAN:
 
@@ -29,4 +31,12 @@ To configure the tool, after installing the required perl modules,
 just edit config.pm to customize it, and also edit ldapadmtool.pl
 to change the first line to point to the location where you have installed
 the files.
+
+Once you're able to execute ldapadmtool.pl without errors, some basic help is
+built-in. Try "./ldapadmtool.pl help" to get started. Functionality has been 
+implemented as several discrete modules which handle operations specific to
+certain entry types, so there are user, group, netgroup, sudoer role, automount map, and
+host modules. To get help on any of these actions, try:
+"./ldapadmtool.pl <module> help"
+
 
