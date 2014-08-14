@@ -39,4 +39,4 @@ certain entry types, so there are user, group, netgroup, sudoer role, automount 
 host modules. To get help on any of these actions, try:
 "./ldapadmtool.pl <module> help"
 
-
+For more information about ldapadmtool, see design.txt 
