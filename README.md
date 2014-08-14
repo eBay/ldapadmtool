@@ -8,6 +8,7 @@ This script requires a few perl modules which can be obtained from CPAN:
 
 Net::LDAP
 Getopt::Std
+Net::Syslog
 
 Some disabled functionality can be turned back on by installing
 Net::Syslog and Term::ReadPassword and then going through the code
